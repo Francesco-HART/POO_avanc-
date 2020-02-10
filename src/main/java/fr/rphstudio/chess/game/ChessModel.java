@@ -10,6 +10,9 @@ import java.util.List;
 public class ChessModel implements IChess
 {
     private static ChessModel chessModel = new ChessModel();
+    private Board board = new Board();
+    private int countWhite = 0;
+    private int countBlack = 0;
     private ChessModel ()
     {
 
@@ -26,21 +29,45 @@ public class ChessModel implements IChess
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        return ChessType.TYP_BISHOP;
+        Piece myPiece = board.findPiece(p);
+        if (myPiece != null){
+            return myPiece.getType();
+        }
+        throw new EmptyCellException();
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        return ChessColor.CLR_BLACK;
+        Piece myPiece = board.findPiece(p);
+        if (myPiece != null){
+            return myPiece.getColor();
+        }
+        throw new EmptyCellException();
     }
+
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
+
+        if (color != null){
+            if ( color == ChessColor.CLR_BLACK){
+                int count = board.countColor(color);
+                return  count;
+            }
+
+            else if ( color == ChessColor.CLR_WHITE){
+                int count = board.countColor(color);
+                return  count;
+            } 
+        }
+
         return 0;
     }
 
+
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
+        System.out.println(p.x+"Pos X getPieceMoves");
         return new ArrayList<>();
     }
 
@@ -51,11 +78,13 @@ public class ChessModel implements IChess
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
+        System.out.println(color+"ColorKing");
         return ChessKingState.KING_SAFE;
     }
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
+        System.out.println(color);
         return new ArrayList<>();
     }
 
