@@ -107,50 +107,7 @@
                     </execution>
                 </executions>
             </plugin>            
-            <plugin>
-                <groupId>com.akathist.maven.plugins.launch4j</groupId>
-                <artifactId>launch4j-maven-plugin</artifactId>
-                <version>1.7.15</version>
-                <executions>
-                    <execution>
-                        <id>l4j-clui</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>launch4j</goal>
-                        </goals>
-                        <configuration>
-                            <headerType>gui</headerType>
-                            <outfile>${project.build.directory}/${project.artifactId}-${project.version}.exe</outfile>
-                            <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
-                            <icon>${project.build.directory}/../src/main/resources/favicon.ico</icon>
-                            <errTitle>encc</errTitle>
-                            <classPath>
-                                <mainClass>fr.rphstudio.chess.launcher.MainLauncher</mainClass>
-                                <addDependencies>true</addDependencies>
-                                <preCp>lib/slick2d-core-1.0.2.jar;lib/lwjgl-2.9.3.jar;lib/lwjgl-platform-2.9.3-natives-windows.jar;lib/jinput-2.0.5.jar;lib/jutils-1.0.0.jar;lib/jinput-platform-2.0.5-natives-windows.jar;lib/jorbis-0.0.17.jar</preCp>
-                            </classPath>
-                            <jre>
-                                <minVersion>1.8.0</minVersion>
-                                <opts>
-                                    <opt>-Djava.library.path=lib</opt>
-                                </opts>
-                            </jre>
-                            <versionInfo>
-                                <fileVersion>${project.version}.0</fileVersion>
-                                <txtFileVersion>${versionType}</txtFileVersion>
-                                <fileDescription>Global Game Jam 2018 by RPH Studio</fileDescription>
-                                <copyright>All Rights Reserved</copyright>
-                                <productVersion>${project.version}.0</productVersion>
-                                <txtProductVersion>${versionType}</txtProductVersion>
-                                <productName>chess</productName>
-                                <internalName>chess</internalName>
-                                <originalFilename>${project.artifactId}-${project.version}.exe</originalFilename>
-                            </versionInfo>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.4</version>
