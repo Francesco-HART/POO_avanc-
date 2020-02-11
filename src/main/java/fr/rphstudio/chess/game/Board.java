@@ -60,4 +60,10 @@ public class Board
             }
         }
     }
+
+    public IChess.ChessPosition movePiece()
+    {
+
+    }
+
 }
