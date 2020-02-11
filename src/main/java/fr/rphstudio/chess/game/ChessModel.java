@@ -2,7 +2,9 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
+import fr.rphstudio.chess.interf.IMove;
 import fr.rphstudio.chess.interf.OutOfBoardException;
+import fr.rphstudio.chess.pieces.Pawn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,6 @@ public class ChessModel implements IChess
 {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
-    private int countWhite = 0;
-    private int countBlack = 0;
     private ChessModel ()
     {
 
@@ -67,8 +67,8 @@ public class ChessModel implements IChess
 
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
-        System.out.println(p.x+"Pos X getPieceMoves");
-        return new ArrayList<>();
+        IMove movePawn = new Pawn();
+        return movePawn.move(p);
     }
 
     @Override

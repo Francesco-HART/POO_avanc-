@@ -1,9 +1,11 @@
 fr/rphstudio/chess/launcher/ChessFontManager$1.class
 fr/rphstudio/chess/launcher/ChessFontManager$LetterInfo.class
 fr/rphstudio/chess/game/ChessModel.class
+fr/rphstudio/chess/interf/IMove.class
 fr/rphstudio/chess/interf/IChess$ChessColor.class
 fr/rphstudio/chess/launcher/ChessFontManager.class
 fr/rphstudio/chess/game/Board.class
+fr/rphstudio/chess/pieces/Pawn.class
 fr/rphstudio/chess/interf/IChess.class
 fr/rphstudio/chess/launcher/MainLauncher.class
 fr/rphstudio/chess/interf/IChess$ChessPosition.class

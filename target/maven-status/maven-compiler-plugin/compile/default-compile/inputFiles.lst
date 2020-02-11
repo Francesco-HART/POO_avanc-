@@ -1,10 +1,12 @@
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/ChessException.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/game/ChessModel.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Piece.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/IChess.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Board.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
-/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Board.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/IChess.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/pieces/Pawn.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Piece.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/ChessException.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/game/ChessModel.java
+/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/IMove.java

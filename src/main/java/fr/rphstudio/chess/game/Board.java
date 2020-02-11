@@ -5,6 +5,7 @@ import fr.rphstudio.chess.interf.IChess;
 
 public class Board
 {
+
     private Piece grid[][];
     private IChess.ChessType[] gridType = new IChess.ChessType[]{IChess.ChessType.TYP_ROOK,  IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KING, IChess.ChessType.TYP_QUEEN, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_ROOK};
 
@@ -58,6 +59,10 @@ public class Board
 
             }
         }
+    }
+
+    public Piece[][] getBoard(){
+        return this.grid;
     }
 
 
