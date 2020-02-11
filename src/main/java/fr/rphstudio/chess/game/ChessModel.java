@@ -60,7 +60,6 @@ public class ChessModel implements IChess
                 return  count;
             } 
         }
-
         return 0;
     }
 
@@ -83,13 +82,11 @@ public class ChessModel implements IChess
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        System.out.println(color+"ColorKing");
         return ChessKingState.KING_SAFE;
     }
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        System.out.println(color);
         return new ArrayList<>();
     }
 
