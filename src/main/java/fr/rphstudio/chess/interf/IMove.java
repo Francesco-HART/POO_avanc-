@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IMove {
 
-    public List<IChess.ChessPosition> move(IChess.ChessPosition p );
+    public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd );
 
 }
