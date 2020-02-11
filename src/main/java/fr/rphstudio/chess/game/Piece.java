@@ -12,11 +12,11 @@ public class Piece
     private IChess.ChessType type;
     private IMove iMove;
 
-    public Piece(IChess.ChessColor color, IChess.ChessType type)
+    public Piece(IChess.ChessColor color, IChess.ChessType type , IMove moves)
     {
         this.color = color;
         this.type = type;
-        this.iMove = new King();
+        this.iMove = moves;
     }
 
     public IChess.ChessColor getColor()
