@@ -17,6 +17,7 @@ fr/rphstudio/chess/interf/IChess$ChessType.class
 fr/rphstudio/chess/game/MovePiece.class
 fr/rphstudio/chess/interf/ChessException.class
 fr/rphstudio/chess/launcher/ChessGameController.class
+fr/rphstudio/chess/pieces/King.class
 fr/rphstudio/chess/interf/OutOfBoardException.class
 fr/rphstudio/chess/interf/IChess$ChessKingState.class
 fr/rphstudio/chess/interf/EmptyCellException.class

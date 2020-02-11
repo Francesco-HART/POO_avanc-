@@ -56,14 +56,14 @@ public class Board
                 {
                     grid[l][c] =  new Piece(IChess.ChessColor.CLR_BLACK , gridType[c]);
                 }
-
             }
         }
     }
 
-    public IChess.ChessPosition movePiece()
+    public void movePiece(IChess.ChessPosition p0,IChess.ChessPosition p1)
     {
-
+        grid[p1.y][p1.x] = grid[p0.y][p0.x];
+        grid[p0.y][p0.x] = null;
     }
 
 }
