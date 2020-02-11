@@ -11,12 +11,10 @@ import java.util.List;
 public class Pawn implements IMove {
 
         @Override
-        public List<IChess.ChessPosition> move(IChess.ChessPosition p) {
+        public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd) {
             List<IChess.ChessPosition> plausible = new ArrayList<>();
-            Board grid = new Board();
-            grid.getBoard();
-            p.y = p.y + 1;
-            plausible.add(p);
+            IChess.ChessPosition pos = new IChess.ChessPosition(p.x,p.y+1);
+            plausible.add(pos);
             return plausible;
         }
     }
