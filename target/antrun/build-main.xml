@@ -2,11 +2,19 @@
 <project name="maven-antrun-" default="main"  >
 <target name="main">
   <echo>Using env.test.properties</echo>
+<<<<<<< Updated upstream
   <copy todir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/../lib">
     <fileset includes="**" dir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/natives"/>
   </copy>
   <copy todir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/..">
     <fileset includes="**" dir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/../src/main/resources"/>
+=======
+  <copy todir="/Users/MeurantMarion/Documents/POO_avanc-/target/../lib">
+    <fileset includes="**" dir="/Users/MeurantMarion/Documents/POO_avanc-/target/natives"/>
+  </copy>
+  <copy todir="/Users/MeurantMarion/Documents/POO_avanc-/target/..">
+    <fileset includes="**" dir="/Users/MeurantMarion/Documents/POO_avanc-/target/../src/main/resources"/>
+>>>>>>> Stashed changes
   </copy>
 </target>
 </project>

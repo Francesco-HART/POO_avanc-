@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
@@ -10,3 +11,15 @@
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/game/ChessModel.java
 /Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/IMove.java
+=======
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Board.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/game/Piece.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/game/ChessModel.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/ChessException.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
+/Users/MeurantMarion/Documents/POO_avanc-/src/main/java/fr/rphstudio/chess/interf/IChess.java
+>>>>>>> Stashed changes
