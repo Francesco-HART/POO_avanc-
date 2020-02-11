@@ -54,16 +54,13 @@ public class ChessModel implements IChess
                 int count = board.countColor(color);
                 return  count;
             }
-
             else if ( color == ChessColor.CLR_WHITE){
                 int count = board.countColor(color);
                 return  count;
-            } 
+            }
         }
-
         return 0;
     }
-
 
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
@@ -73,18 +70,15 @@ public class ChessModel implements IChess
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-
     }
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        System.out.println(color+"ColorKing");
         return ChessKingState.KING_SAFE;
     }
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        System.out.println(color);
         return new ArrayList<>();
     }
 
