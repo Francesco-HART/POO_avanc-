@@ -2,11 +2,11 @@
 <project name="maven-antrun-" default="main"  >
 <target name="main">
   <echo>Using env.test.properties</echo>
-  <copy todir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/../lib">
-    <fileset includes="**" dir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/natives"/>
+  <copy todir="/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/target/../lib">
+    <fileset includes="**" dir="/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/target/natives"/>
   </copy>
-  <copy todir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/..">
-    <fileset includes="**" dir="/Users/franceebbasta/Documents/Java/Poo++/Echec/POO_avanc-/target/../src/main/resources"/>
+  <copy todir="/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/target/..">
+    <fileset includes="**" dir="/Users/florentdebuchy/Desktop/travail de la semaine école/POO avancé/POO_avanc-/target/../src/main/resources"/>
   </copy>
 </target>
 </project>

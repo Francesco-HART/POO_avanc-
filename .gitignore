@@ -1,5 +1,8 @@
 
 .idea/
-
+.target/
+.sprites/
+.info/
+.lib/
 
 .DS_Store
