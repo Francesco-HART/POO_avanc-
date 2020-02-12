@@ -20,14 +20,13 @@ public class Pawn implements IMove {
         int POSY_PAWN = p.y;
         int LINEPAWN_TOP = 1;
         int LINEPAWN_BOTTOM = 6;
-        for (int i = POSX_PAWN - 1; i <= POSX_PAWN + 1; i++) {
-            for (int j = POSY_PAWN - 1; j <= POSY_PAWN + 1; j++) {
+
 
                 if (ownColor == ChessColor.CLR_WHITE) {
                     ChessPosition pos2 = new ChessPosition(p.x, p.y + 2);
                     ChessPosition pos = new ChessPosition(p.x, p.y + 1);
 
-                    if (p.y == LINEPAWN_TOP && brd.findPiece(pos2) == null)
+                    if (p.y == LINEPAWN_TOP && brd.findPiece(pos2) == null && brd.findPiece(pos) == null)
                         plausible.add(pos2);
 
                     if (brd.findPiece(pos) == null)
@@ -49,13 +48,16 @@ public class Pawn implements IMove {
 
                     if (brd.findPiece(pos) == null)
                         plausible.add(pos);
-//                    if ((i == POSX_PAWN - 1 && j == POSY_PAWN - 1 || i == POSX_PAWN + 1 && j == POSY_PAWN - 1) && brd.findPiece(pos) != null) {
-//                        ChessPosition posAdj = new ChessPosition(i, j);
-//                        if (brd.findPiece(posAdj).getColor() == ChessColor.CLR_WHITE)
-//                            plausible.add(posAdj);
+//
+//                    for (int i = POSX_PAWN - 1 ; i < POSX_PAWN + 1; i++) {
+//                        for (int j = POSY_PAWN - 1 ; j < POSY_PAWN + 1; j++) {
+//                            if ((i == POSX_PAWN - 1 && j == POSY_PAWN - 1) && (i == POSX_PAWN + 1 && j == POSY_PAWN - 1) && brd.findPiece(pos) != null) {
+//                                ChessPosition posAdj = new ChessPosition(i, j);
+//                                if (brd.findPiece(posAdj).getColor() == ChessColor.CLR_WHITE)
+//                                    plausible.add(posAdj);
+//                            }
+//                        }
 //                    }
-                }
-            }
         }
         return plausible;
     }
