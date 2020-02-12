@@ -13,6 +13,7 @@ public class ChessModel implements IChess
 {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
+    private Timer time = new Timer();
     private ChessModel ()
     {
 
@@ -95,7 +96,8 @@ public class ChessModel implements IChess
     }
 
     @Override
-    public long getPlayerDuration(ChessColor color, boolean isPlaying) {
-        return 0;
+    public long getPlayerDuration(ChessColor color, boolean isPlaying)
+    {
+        return time.getTimer(color, isPlaying);
     }
 }

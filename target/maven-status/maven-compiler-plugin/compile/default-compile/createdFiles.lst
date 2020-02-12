@@ -1,3 +1,4 @@
+fr/rphstudio/chess/game/Timer.class
 fr/rphstudio/chess/pieces/Rook.class
 fr/rphstudio/chess/launcher/ChessFontManager$LetterInfo.class
 fr/rphstudio/chess/interf/IMove.class

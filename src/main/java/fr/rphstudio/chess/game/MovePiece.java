@@ -36,12 +36,18 @@ public class MovePiece
             for (int dist = 1; dist <= 7; dist++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx * dist, p.y + dy * dist);
                 if (pos.x < 8 && pos.y < 8 && pos.x >= 0 && pos.y >= 0) {
-                    if (brd.findPiece(pos) == null || brd.findPiece(pos).getColor() != brd.findPiece(p).getColor()) {
+                    if (brd.findPiece(pos) == null) {
                         moves.add(pos);
-                    } else {
+                    }
+                    else if(brd.findPiece(pos).getColor() != brd.findPiece(p).getColor())
+                    {
+                        moves.add(pos);
                         break;
                     }
-                } else {
+                    else break;
+
+                }
+                else {
                     break;
                 }
             }
@@ -74,14 +80,15 @@ public class MovePiece
             for (int dist = 1; dist <= 7; dist++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx * dist, p.y + dy * dist);
                 if (pos.x < 8 && pos.y < 8 && pos.x >= 0 && pos.y >= 0) {
-                    if(brd.findPiece(pos) == null)
-                    {
+                    if (brd.findPiece(pos) == null) {
                         moves.add(pos);
                     }
-                    else
+                    else if(brd.findPiece(pos).getColor() != brd.findPiece(p).getColor())
                     {
+                        moves.add(pos);
                         break;
                     }
+                    else break;
                 } else
                 {
                     break;
