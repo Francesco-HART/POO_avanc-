@@ -4,7 +4,9 @@ import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
 import fr.rphstudio.chess.interf.OutOfBoardException;
+import fr.rphstudio.chess.launcher.MainLauncher;
 import fr.rphstudio.chess.pieces.Pawn;
+import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +25,17 @@ public class ChessModel implements IChess
         return chessModel;
     }
 
-    @Override
+    public void resetTimer(ChessColor color, boolean isPlaying) {
+
+        new Timer();
+        //ok
+
+    }
+
+
     public void reinit() {
+
+        board.createInitBoard();
 
     }
 
@@ -39,6 +50,9 @@ public class ChessModel implements IChess
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
+        if (p.x>7 || p.x<0 || p.y>7 || p.y<0){
+            throw new OutOfBoardException();
+        }
         Piece myPiece = board.findPiece(p);
         if (myPiece != null){
             return myPiece.getColor();

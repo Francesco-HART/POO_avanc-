@@ -234,6 +234,7 @@ public interface IChess
      * @throws EmptyCellException when the targeted cell contains no piece.
      * @throws OutOfBoardException when the position is outside the chess board.
      */
+
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException;
 
     /**
