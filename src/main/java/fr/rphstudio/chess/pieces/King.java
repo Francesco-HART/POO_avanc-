@@ -20,7 +20,6 @@ public class King implements IMove {
                 }
             }
         }
-        System.out.println(tabPos);
         return tabPos;
     }
 }

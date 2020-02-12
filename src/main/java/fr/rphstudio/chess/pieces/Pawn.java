@@ -22,44 +22,71 @@ public class Pawn implements IMove {
         int LINEPAWN_BOTTOM = 6;
 
 
-                if (ownColor == ChessColor.CLR_WHITE) {
-                    ChessPosition pos2 = new ChessPosition(p.x, p.y + 2);
-                    ChessPosition pos = new ChessPosition(p.x, p.y + 1);
+        if (ownColor == ChessColor.CLR_WHITE) {
+            ChessPosition pos2 = new ChessPosition(p.x, p.y + 2);
+            ChessPosition pos = new ChessPosition(p.x, p.y + 1);
 
-                    if (p.y == LINEPAWN_TOP && brd.findPiece(pos2) == null && brd.findPiece(pos) == null)
-                        plausible.add(pos2);
+            if (p.y == LINEPAWN_TOP && brd.findPiece(pos2) == null && brd.findPiece(pos) == null)
+                plausible.add(pos2);
 
-                    if (brd.findPiece(pos) == null)
-                        plausible.add(pos);
+            if (brd.findPiece(pos) == null)
+                plausible.add(pos);
 
-//                    if (((i == POSX_PAWN - 1 && j == POSY_PAWN + 1) || (i == POSX_PAWN + 1 && j == POSY_PAWN + 1)) && (brd.findPiece(pos) != null) ) {
-//                        ChessPosition posAdj = new ChessPosition(i, j);
-//                        if (brd.findPiece(posAdj).getColor() == ChessColor.CLR_BLACK)
-//                            plausible.add(posAdj);
-//                    }
+            ChessPosition posAdjBlackLeft = new ChessPosition(POSX_PAWN - 1, POSY_PAWN + 1);
+            ChessPosition posAdjBlackRight = new ChessPosition(POSX_PAWN + 1, POSY_PAWN + 1);
+
+            if (posAdjBlackLeft.x >= 0 && posAdjBlackLeft.y < 8 ) {
+                if (brd.findPiece(posAdjBlackLeft) != null ) {
+
+                    if (brd.findPiece(posAdjBlackLeft).getColor() == ChessColor.CLR_BLACK)
+                        plausible.add(posAdjBlackLeft);
+                }
+            }
+            if (posAdjBlackRight.x < 8 && posAdjBlackRight.y < 8) {
+                if (brd.findPiece(posAdjBlackRight) != null) {
+
+                    if (brd.findPiece(posAdjBlackRight).getColor() == ChessColor.CLR_BLACK)
+                        plausible.add(posAdjBlackRight);
+                }
+            }
+
+            if(POSX_PAWN == 7){
+
+            }
+        } else if (ownColor == ChessColor.CLR_BLACK) {
+            ChessPosition pos2 = new ChessPosition(p.x, p.y - 2);
+            ChessPosition pos = new ChessPosition(p.x, p.y - 1);
+
+            if (p.y == LINEPAWN_BOTTOM && brd.findPiece(pos2) == null)
+                plausible.add(pos2);
+
+            if (brd.findPiece(pos) == null)
+                plausible.add(pos);
 
 
-                } else if (ownColor == ChessColor.CLR_BLACK) {
-                    ChessPosition pos2 = new ChessPosition(p.x, p.y - 2);
-                    ChessPosition pos = new ChessPosition(p.x, p.y - 1);
+            ChessPosition posAdjBlackLeft = new ChessPosition(POSX_PAWN - 1, POSY_PAWN - 1);
+            ChessPosition posAdjBlackRight = new ChessPosition(POSX_PAWN + 1, POSY_PAWN - 1);
 
-                    if (p.y == LINEPAWN_BOTTOM && brd.findPiece(pos2) == null)
-                        plausible.add(pos2);
+            if (posAdjBlackLeft.x >= 0 && posAdjBlackLeft.y >= 0 ) {
+                if (brd.findPiece(posAdjBlackLeft) != null ) {
 
-                    if (brd.findPiece(pos) == null)
-                        plausible.add(pos);
-//
-//                    for (int i = POSX_PAWN - 1 ; i < POSX_PAWN + 1; i++) {
-//                        for (int j = POSY_PAWN - 1 ; j < POSY_PAWN + 1; j++) {
-//                            if ((i == POSX_PAWN - 1 && j == POSY_PAWN - 1) && (i == POSX_PAWN + 1 && j == POSY_PAWN - 1) && brd.findPiece(pos) != null) {
-//                                ChessPosition posAdj = new ChessPosition(i, j);
-//                                if (brd.findPiece(posAdj).getColor() == ChessColor.CLR_WHITE)
-//                                    plausible.add(posAdj);
-//                            }
-//                        }
-//                    }
+                    if (brd.findPiece(posAdjBlackLeft).getColor() == ChessColor.CLR_WHITE)
+                        plausible.add(posAdjBlackLeft);
+                }
+            }
+            if (posAdjBlackRight.x < 8 && posAdjBlackRight.y >= 0) {
+                if (brd.findPiece(posAdjBlackRight) != null) {
+
+                    if (brd.findPiece(posAdjBlackRight).getColor() == ChessColor.CLR_WHITE)
+                        plausible.add(posAdjBlackRight);
+                }
+            }
         }
+
+
+
         return plausible;
     }
 }
+
 
