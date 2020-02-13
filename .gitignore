@@ -1,0 +1,10 @@
+
+target/Chess-1.6.79-release-windows/Chess-1.6.79/lib/
+
+target/Chess-1.6.79-mac-osx/Chess-1.6.79/lib/
+
+.idea/
+target/
+target/natives/
+
+target/classes/
