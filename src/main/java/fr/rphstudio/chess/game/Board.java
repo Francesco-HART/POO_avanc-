@@ -4,6 +4,9 @@ import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
 import fr.rphstudio.chess.pieces.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Board
 {
@@ -64,6 +67,50 @@ public class Board
                 }
             }
         }
+    }
+
+    public IChess.ChessKingState findKing(IChess.ChessColor color)
+    {
+        IChess.ChessKingState kingState = IChess.ChessKingState.KING_SAFE;
+        List<IChess.ChessPosition> listPos;
+        List<IChess.ChessPosition> alllistPos = new ArrayList<>();
+        IChess.ChessPosition posKing = new IChess.ChessPosition();
+        for (int i = 0; i < grid.length; i++)
+        {
+            for (int j = 0; j < grid.length; j++)
+            {
+                if(grid[i][j] != null)
+                {
+                    if(grid[i][j].getType() == IChess.ChessType.TYP_KING && grid[i][j].getColor() == color)
+                    {
+                        posKing.x = j;
+                        posKing.y = i;
+                    }
+                    else if (grid[i][j].getType() != IChess.ChessType.TYP_KING && grid[i][j].getColor() != color)
+                    {
+                        IChess.ChessPosition posOther = new IChess.ChessPosition(j,i);
+                        listPos = grid[i][j].getMoves(posOther,this);
+                        alllistPos.addAll(listPos);
+                    }
+                }
+            }
+        }
+        for (int k = 0; k < alllistPos.size(); k++)
+        {
+            System.out.println("position du rois " + posKing.x + " " + posKing.y);
+            System.out.println("position de ma liste  " + alllistPos.get(k).x + " " + alllistPos.get(k).y);
+            if (alllistPos.get(k).y == posKing.y && alllistPos.get(k).x == posKing.x)
+            {
+                System.out.println("je suis dans mon if pour alerter le roi");
+                kingState = IChess.ChessKingState.KING_THREATEN;
+                return kingState;
+            }
+            else
+            {
+                kingState = IChess.ChessKingState.KING_SAFE;
+            }
+        }
+        return kingState;
     }
 
     public void movePiece(IChess.ChessPosition p0,IChess.ChessPosition p1)

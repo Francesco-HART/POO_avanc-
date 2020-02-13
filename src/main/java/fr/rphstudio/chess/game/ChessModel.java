@@ -91,12 +91,16 @@ public class ChessModel implements IChess
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1)
     {
+        Piece piece = board.findPiece(p0);
         board.movePiece(p0 , p1);
+        int nbMoves = piece.countMoves();
+        time.newTour(piece.getColor());
     }
 
     @Override
-    public ChessKingState getKingState(ChessColor color) {
-        return ChessKingState.KING_SAFE;
+    public ChessKingState getKingState(ChessColor color)
+    {
+        return board.findKing(color);
     }
 
     @Override
@@ -112,6 +116,6 @@ public class ChessModel implements IChess
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying)
     {
-        return time.getTimer(color, isPlaying);
+        return time.getPlayertime(color,isPlaying);
     }
 }
