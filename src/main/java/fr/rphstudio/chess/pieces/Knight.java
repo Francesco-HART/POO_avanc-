@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Knight implements IMove {
+    /**
+     * all Knight moves
+     * @param p position of one piece in the board
+     * @param brd board with all pieces
+     * @return tab of all knight moves
+     */
     @Override
     public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> tabPos = new ArrayList<>();
@@ -33,20 +39,6 @@ public class Knight implements IMove {
                 }
             }
         }
-
-
-        /*
-        tabPos.add(new IChess.ChessPosition(p.x+1, p.y-2));
-        tabPos.add(new IChess.ChessPosition(p.x-1, p.y-2));
-        tabPos.add(new IChess.ChessPosition(p.x+1, p.y+2));
-        tabPos.add(new IChess.ChessPosition(p.x-1, p.y+2));
-        tabPos.add(new IChess.ChessPosition(p.x+2, p.y-1));
-        tabPos.add(new IChess.ChessPosition(p.x-2, p.y-1));
-        tabPos.add(new IChess.ChessPosition(p.x+2, p.y+1));
-        tabPos.add(new IChess.ChessPosition(p.x-2, p.y+1));
-        */
-
-
         return tabPos;
     }
 }

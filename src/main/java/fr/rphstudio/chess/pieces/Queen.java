@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Queen implements IMove {
+    /**
+     * use moveForward for get all inline moves and moveDiagonal for all diagonal move
+     * @param p position of one piece in the board
+     * @param brd board with all pieces
+     * @return list with all moves
+     */
     @Override
     public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd)
     {

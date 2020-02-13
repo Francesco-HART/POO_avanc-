@@ -5,7 +5,16 @@ import fr.rphstudio.chess.interf.IChess;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * method for move bishop , rook and queen
+ */
 public class MovePiece {
+    /**
+     * pemis to access all moves in line for the queen and the rook
+     * @param p pos of the target piece
+     * @param brd board
+     * @return tab with all moves in line for rook and queen
+     */
     public List<IChess.ChessPosition> moveDiagonal(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> moves = new ArrayList<>();
 
@@ -53,6 +62,12 @@ public class MovePiece {
         return moves;
     }
 
+    /**
+     * pemis to access all moves in diagonal for the queen and the rook
+     * @param p pos of the target piece
+     * @param brd board
+     * @return tab with all moves in digonalfor rook and queen
+     */
     public List<IChess.ChessPosition> moveForward(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> moves = new ArrayList<>();
 

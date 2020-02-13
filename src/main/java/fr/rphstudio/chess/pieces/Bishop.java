@@ -9,7 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bishop implements IMove {
-
+    /**
+     * use the function move for find all positions moves
+     * @param p position of one piece in the board
+     * @param brd board with all pieces
+     * @return list of all positions moves
+     */
     @Override
     public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd)
     {

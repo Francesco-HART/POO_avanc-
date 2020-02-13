@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class King implements IMove {
+    /**
+     *  all king moves rock and around it
+     * @param p position of one piece in the board
+     * @param brd board with all pieces
+     * @return tab with all king moves
+     */
     @Override
     public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> tabPos = new ArrayList<>();

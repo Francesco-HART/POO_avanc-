@@ -159,6 +159,11 @@ public class ChessModel implements IChess {
         return board.findKing(color);
     }
 
+    /**
+     * get all pieces eat
+     * @param color color of the removed pieces
+     * @return tab of pieces eat depending of color
+     */
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
 
@@ -172,6 +177,10 @@ public class ChessModel implements IChess {
 
     }
 
+    /**
+     * back to the previous board remove the last value on the tab of pieces eat
+     * @return previous board
+     */
     @Override
     public boolean undoLastMove() {
         if (eat)
@@ -180,6 +189,12 @@ public class ChessModel implements IChess {
         return board.getPrevious();
     }
 
+    /**
+     * time of play , depending color
+     * @param color The color of the player from whom we want to get the current duration.
+     * @param isPlaying Indicates if the player color is the one currently playing.
+     * @return time play
+     */
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
         return time.getPlayertime(color, isPlaying);

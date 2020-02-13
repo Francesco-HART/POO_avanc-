@@ -2,7 +2,6 @@ package fr.rphstudio.chess.pieces;
 
 import fr.rphstudio.chess.game.Board;
 import fr.rphstudio.chess.game.Piece;
-import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IChess.*;
 import fr.rphstudio.chess.interf.IMove;
 
@@ -10,7 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn implements IMove {
-
+    /**
+     *  all pawn moves in front 1
+     *  in front 2 if it's one the first line
+     *  eat in diagonal
+     *  and change on dame
+     * @param p position of one piece in the board
+     * @param brd board with all pieces
+     * @return list of all moves
+     */
     @Override
     public List<ChessPosition> move(ChessPosition p, Board brd) {
         List<ChessPosition> plausible = new ArrayList<>();

@@ -16,6 +16,12 @@ public class Timer {
         startTime = System.currentTimeMillis();
     }
 
+    /**
+     * get time play for one player
+     * @param color color for the piece
+     * @param isPlaying if true the color select play
+     * @return the time play
+     */
     public long getPlayertime(IChess.ChessColor color, boolean isPlaying) {
         long time = 0;
         if (color == IChess.ChessColor.CLR_WHITE) {
@@ -29,6 +35,9 @@ public class Timer {
         return time;
     }
 
+    /**
+     * reset the timer
+     */
     public void reset() {
         timeBlack = 0;
         timeWhite = 0;
@@ -36,7 +45,10 @@ public class Timer {
 
     }
 
-
+    /**
+     * permis to change tour of game
+     * @param color
+     */
     public void newTour(IChess.ChessColor color) {
         if (color == IChess.ChessColor.CLR_WHITE) {
             timeWhite += getCurrentTime();
