@@ -15,22 +15,36 @@ public class ChessModel implements IChess {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
     private Timer time = new Timer();
-
     private ChessModel() {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public static ChessModel getInstance() {
         return chessModel;
     }
 
+    /**
+     * clear the board
+     */
     public void reinit() {
 
         board.createInitBoard();
+        board.restartSave();
         time.reset();
 
     }
 
+    /**
+     * take the piece type
+     * @param p x/y position on the board where we want to get the piece type.
+     * @return the type
+     * @throws EmptyCellException
+     * @throws OutOfBoardException
+     */
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         Piece myPiece = board.findPiece(p);
@@ -40,6 +54,13 @@ public class ChessModel implements IChess {
         throw new EmptyCellException();
     }
 
+    /**
+     * take piece color
+     * @param p x/y position on the board where we want to get the piece color.
+     * @return the color
+     * @throws EmptyCellException
+     * @throws OutOfBoardException
+     */
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         if (p.x>7 || p.x<0 || p.y>7 || p.y<0){
@@ -52,7 +73,11 @@ public class ChessModel implements IChess {
         throw new EmptyCellException();
     }
 
-
+    /**
+     * count the number of pieces for the player
+     * @param color the requested color of the pieces to count.
+     * @return the number of pieces
+     */
     @Override
     public int getNbRemainingPieces(ChessColor color) {
 
@@ -68,6 +93,11 @@ public class ChessModel implements IChess {
         return 0;
     }
 
+    /**
+     *
+     * @param p requested piece position.
+     * @return the number of possible movement
+     */
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         Piece piece = null;
@@ -79,6 +109,11 @@ public class ChessModel implements IChess {
         }
     }
 
+    /**
+     * Move a piece to the selected position
+     * @param p0 source position on the board.
+     * @param p1 destination position on the board.
+     */
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
         board.previousBoard();
@@ -90,22 +125,42 @@ public class ChessModel implements IChess {
         time.newTour(piece.getColor());
     }
 
+    /**
+     * take the king color
+     * @param color the requested king color.
+     * @return the color of the king
+     */
     @Override
     public ChessKingState getKingState(ChessColor color) {
         return board.findKing(color);
     }
 
+    /**
+     *
+     * @param color color of the removed pieces
+     * @return a list of each piece removed
+     */
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
         return new ArrayList<>();
     }
 
+    /**
+     * save the time for the previous move
+     * @return time when the last move was played
+     */
     @Override
     public boolean undoLastMove() {
         time.previousTime();
         return board.getPrevious();
     }
 
+    /**
+     * take time of the player
+     * @param color The color of the player from whom we want to get the current duration.
+     * @param isPlaying Indicates if the player color is the one currently playing.
+     * @return time of a player when playing
+     */
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
         return time.getPlayertime(color, isPlaying);

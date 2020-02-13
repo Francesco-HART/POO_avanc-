@@ -11,7 +11,9 @@ import java.util.List;
 
 public class Board
 {
-
+    /**
+     * make global variable for methode
+     */
     private Piece grid[][];
     private IChess.ChessType[] gridType =
             new IChess.ChessType[]{IChess.ChessType.TYP_ROOK,  IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KING, IChess.ChessType.TYP_QUEEN, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_ROOK};
@@ -19,11 +21,20 @@ public class Board
     private Piece retardedBoard [][];
     public int POS_END_WHITE = 7;
     public int POS_END_BLACK = 0;
+
+    /**
+     * contructor Board
+     */
     public Board()
     {
          createInitBoard();
     }
 
+    /**
+     *
+     * @param p is a position to find  a piece
+     * @return the x && y
+     */
     public Piece findPiece(IChess.ChessPosition p)
     {
         if (p.y < 0 || p.y > 7 || p.x < 0 || p.x >  7)
@@ -33,6 +44,11 @@ public class Board
         return this.grid[p.y][p.x];
     }
 
+    /**
+     *
+     * @param c is color need to count
+     * @return  the number of remaining color
+     */
     public int countColor(IChess.ChessColor c)
     {
         int count = 0;
@@ -49,6 +65,9 @@ public class Board
         return count;
     }
 
+    /**
+     * create the board and Piece
+     */
     public void createInitBoard()
     {
         this.grid = new Piece[8][8];
@@ -77,6 +96,11 @@ public class Board
         }
     }
 
+    /**
+     * method to find the king
+     * @param color is king color
+     * @return the position of king on the board
+     */
     public IChess.ChessKingState findKing(IChess.ChessColor color)
     {
         IChess.ChessKingState kingState = IChess.ChessKingState.KING_SAFE;
@@ -118,6 +142,11 @@ public class Board
         return kingState;
     }
 
+    /**
+     * make a movement
+     * @param p0 position initial
+     * @param p1 position target
+     */
     public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
         if (grid[p1.y][p1.x] == null || grid[p0.y][p0.x].getColor() != grid[p1.y][p1.x].getColor()) {
             if (grid[p0.y][p0.x].getType() == IChess.ChessType.TYP_KING) {
@@ -130,10 +159,15 @@ public class Board
         }
     }
 
-
-    public Piece pawnToQueen(Piece valPos, IChess.ChessPosition p) {
-        if (valPos != null) {
-            if (valPos.getType() == IChess.ChessType.TYP_PAWN) {
+    /**
+     * Make a pawn on Queen
+     * @param piece is the piece
+     * @param p piece position on the board
+     * @return the new piece (queen if pown)
+     */
+    public Piece pawnToQueen(Piece piece, IChess.ChessPosition p) {
+        if (piece != null) {
+            if (piece.getType() == IChess.ChessType.TYP_PAWN) {
                 if (p.y == POS_END_WHITE) {
                     return new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN, new Queen());
                 } else if (p.y == POS_END_BLACK) {
@@ -141,9 +175,14 @@ public class Board
                 }
             }
         }
-        return valPos;
+        return piece;
     }
 
+    /**
+     * make the ROCK
+     * @param p0 initial position
+     * @param p1 target position
+     */
     public void rock(IChess.ChessPosition p0, IChess.ChessPosition p1) {
 
         if (grid[p1.y][p1.x + 1] != null && grid[p1.y][p1.x + 1].getCountMove() == 0 && grid[p1.y][p1.x + 1].getColor() == grid[p0.y][p0.x].getColor()) {
@@ -162,6 +201,9 @@ public class Board
         }
     }
 
+    /**
+     * save the previous movement
+     */
     public void previousBoard()
     {
         this.retardedBoard = new Piece[8][8];
@@ -172,10 +214,18 @@ public class Board
         }
     }
 
+    /**
+     * @return true when result is returned
+     */
     public boolean getPrevious()
     {
         grid = retardedBoard;
         return true;
+    }
+
+    public void restartSave()
+    {
+        retardedBoard = grid;
     }
 
 }
