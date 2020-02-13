@@ -26,6 +26,17 @@ public class Timer {
         if (isPlaying == true) {
             time += getCurrentTime();
         }
+        if (passTime == true)
+        {
+            if (color == IChess.ChessColor.CLR_BLACK)
+            {
+                time -= timeWhite;
+            }
+            else if (color == IChess.ChessColor.CLR_WHITE)
+            {
+                time -= timeBlack;
+            }
+        }
         return time;
     }
 
@@ -44,5 +55,9 @@ public class Timer {
             timeBlack += getCurrentTime();
         }
         startNewTime();
+    }
+    public void previousTime()
+    {
+        passTime = true;
     }
 }
