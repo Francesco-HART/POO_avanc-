@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fr.rphstudio.chess.game</OriginalElement>
+  <nodes>
+    <node x="0.0" y="148.0">fr.rphstudio.chess.game.Piece</node>
+    <node x="0.0" y="74.0">fr.rphstudio.chess.game.MovePiece</node>
+    <node x="128.0" y="148.0">fr.rphstudio.chess.game.Board</node>
+    <node x="0.0" y="222.0">fr.rphstudio.chess.game.Timer</node>
+    <node x="0.0" y="0.0">fr.rphstudio.chess.game.ChessModel</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="105.5" y="125.5" />
+  <SelectedNodes>
+    <node>fr.rphstudio.chess.game.Piece</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

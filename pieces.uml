@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fr.rphstudio.chess.pieces</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">fr.rphstudio.chess.pieces.Knight</node>
+    <node x="0.0" y="74.0">fr.rphstudio.chess.pieces.Bishop</node>
+    <node x="0.0" y="148.0">fr.rphstudio.chess.pieces.Rook</node>
+    <node x="135.0" y="74.0">fr.rphstudio.chess.pieces.Queen</node>
+    <node x="121.0" y="148.0">fr.rphstudio.chess.pieces.Pawn</node>
+    <node x="0.0" y="222.0">fr.rphstudio.chess.pieces.King</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="109.0" y="125.5" />
+  <SelectedNodes>
+    <node>fr.rphstudio.chess.pieces.Knight</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
