@@ -25,17 +25,10 @@ public class ChessModel implements IChess
         return chessModel;
     }
 
-    public void resetTimer(ChessColor color, boolean isPlaying) {
-
-        new Timer();
-        //ok
-
-    }
-
-
     public void reinit() {
 
         board.createInitBoard();
+        time.reset();
 
     }
 
