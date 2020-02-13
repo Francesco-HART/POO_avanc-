@@ -16,13 +16,16 @@ public class Board
     private IChess.ChessType[] gridType =
             new IChess.ChessType[]{IChess.ChessType.TYP_ROOK,  IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KING, IChess.ChessType.TYP_QUEEN, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_ROOK};
     private IMove[] gridMoves = new IMove[]{new Rook(), new Knight(), new Bishop(), new King(), new Queen(), new Bishop(), new Knight(), new Rook()};
+<<<<<<< HEAD
     private Piece retardedBoard [][];
     public int POS_END_WHITE = 7;
     public int POS_END_BLACK = 0;
+=======
+
+>>>>>>> Eddy
     public Board()
     {
-        this.grid = new Piece[8][8];
-        createInitBoard();
+         createInitBoard();
     }
 
     public Piece findPiece(IChess.ChessPosition p)
@@ -52,6 +55,8 @@ public class Board
 
     public void createInitBoard()
     {
+        this.grid = new Piece[8][8];
+
         for(int l = 0; l < 8;l++)
         {
             for (int c = 0; c < 8;c++)
