@@ -28,9 +28,9 @@ public class Board {
     }
 
     /**
-     *
-     * @param p
-     * @return
+     * search piece on the board
+     * @param p position need
+     * @return the position of the piece or null
      */
     public Piece findPiece(IChess.ChessPosition p) {
         if (p.y < 0 || p.y > 7 || p.x < 0 || p.x > 7) {
@@ -39,6 +39,11 @@ public class Board {
         return this.grid[p.y][p.x];
     }
 
+    /**
+     * count the remaining color on the grid
+     * @param c the color need
+     * @return the color remaining
+     */
     public int countColor(IChess.ChessColor c) {
         int count = 0;
         for (int i = 0; i < grid.length; i++) {
@@ -51,6 +56,9 @@ public class Board {
         return count;
     }
 
+    /**
+     * initiate the grid
+     */
     public void createInitBoard() {
         this.grid = new Piece[8][8];
 
@@ -74,6 +82,11 @@ public class Board {
         }
     }
 
+    /**
+     * search the king on the board && return the state of the king (safe or threaten
+     * @param color search with color
+     * @return the state
+     */
     public IChess.ChessKingState findKing(IChess.ChessColor color)
     {
         IChess.ChessKingState kingState = IChess.ChessKingState.KING_SAFE;
@@ -115,6 +128,11 @@ public class Board {
         return kingState;
     }
 
+    /**
+     *  move p0 to p1 && make the rock movement
+     * @param p0 initial position
+     * @param p1 target position
+     */
     public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
         if (grid[p1.y][p1.x] == null || grid[p0.y][p0.x].getColor() != grid[p1.y][p1.x].getColor()) {
             if (grid[p0.y][p0.x].getType() == IChess.ChessType.TYP_KING) {
@@ -133,10 +151,15 @@ public class Board {
         }
     }
 
-
-    public Piece pawnToQueen(Piece valPos, IChess.ChessPosition p) {
-        if (valPos != null) {
-            if (valPos.getType() == IChess.ChessType.TYP_PAWN) {
+    /**
+     * change pawn to queen
+     * @param informationPiece type of piece
+     * @param p piece position
+     * @return return the new information
+     */
+    public Piece pawnToQueen(Piece informationPiece, IChess.ChessPosition p) {
+        if (informationPiece != null) {
+            if (informationPiece.getType() == IChess.ChessType.TYP_PAWN) {
                 if (p.y == POS_END_WHITE) {
                     return new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN, new Queen());
                 } else if (p.y == POS_END_BLACK) {
@@ -144,9 +167,14 @@ public class Board {
                 }
             }
         }
-        return valPos;
+        return informationPiece;
     }
 
+    /**
+     * make the movement rock
+     * @param p0 initial position
+     * @param p1 po target position
+     */
     public void rock(IChess.ChessPosition p0, IChess.ChessPosition p1) {
 
         if (grid[p1.y][p1.x + 1] != null && grid[p1.y][p1.x + 1].getCountMove() == 0 && grid[p1.y][p1.x + 1].getColor() == grid[p0.y][p0.x].getColor() && grid[p1.y][p1.x + 1].getType() == IChess.ChessType.TYP_ROOK) {
@@ -165,6 +193,9 @@ public class Board {
         }
     }
 
+    /**
+     * copy board
+     */
     public void previousBoard() {
         this.retardedBoard = new Piece[8][8];
         for (int i = 0; i < this.grid.length; i++) {
@@ -174,6 +205,10 @@ public class Board {
         }
     }
 
+    /**
+     * verif if move has be do
+     * @return
+     */
     public boolean getPrevious() {
         if (retardedBoard != null) {
             for (int i = 0; i < grid.length ; i++) {
@@ -190,37 +225,42 @@ public class Board {
         return false;
     }
 
+    /**
+     * reset game board
+     */
     public void resetSave() {
         retardedBoard = grid;
     }
 
-
-    public boolean tryMove(IChess.ChessPosition p0, IChess.ChessPosition p1) {
-        boolean isPossible = false;
-        try {
-            Piece save = grid[p1.y][p1.x];
-            grid[p1.y][p1.x] = grid[p0.y][p0.x];
-            grid[p0.y][p0.x] = null;
-            IChess.ChessKingState monState = findKing(grid[p1.y][p1.x].getColor());
-            System.out.println(monState + "mon etat ta mere ");
-            if (monState == IChess.ChessKingState.KING_SAFE) {
-                System.out.println("je suis dans mon if ");
-                isPossible = true;
-
-            }
-            grid[p0.y][p0.x] = grid[p1.y][p1.x];
-            System.out.println("j'annule le changement");
-            grid[p1.y][p1.x] = save;
-            System.out.println("p1 = save");
-
-            return isPossible;
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("non");
-            return isPossible;
-        }
-        //return isPossible;
-
-    }
+/**
+ * test if case around king are safe
+ */
+//    public boolean tryMove(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+//        boolean isPossible = false;
+//        try {
+//            Piece save = grid[p1.y][p1.x];
+//            grid[p1.y][p1.x] = grid[p0.y][p0.x];
+//            grid[p0.y][p0.x] = null;
+//            IChess.ChessKingState monState = findKing(grid[p1.y][p1.x].getColor());
+//            System.out.println(monState + "mon etat ta mere ");
+//            if (monState == IChess.ChessKingState.KING_SAFE) {
+//                System.out.println("je suis dans mon if ");
+//                isPossible = true;
+//
+//            }
+//            grid[p0.y][p0.x] = grid[p1.y][p1.x];
+//            System.out.println("j'annule le changement");
+//            grid[p1.y][p1.x] = save;
+//            System.out.println("p1 = save");
+//
+//            return isPossible;
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            System.out.println("non");
+//            return isPossible;
+//        }
+//        //return isPossible;
+//
+//    }
 
 }

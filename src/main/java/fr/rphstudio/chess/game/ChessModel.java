@@ -2,15 +2,15 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
-import fr.rphstudio.chess.interf.IMove;
 import fr.rphstudio.chess.interf.OutOfBoardException;
-import fr.rphstudio.chess.launcher.MainLauncher;
-import fr.rphstudio.chess.pieces.Pawn;
-import org.newdawn.slick.SlickException;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * scene
+ */
 public class ChessModel implements IChess {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
@@ -25,10 +25,17 @@ public class ChessModel implements IChess {
 
     }
 
+    /**
+     * return the scene
+     * @return
+     */
     public static ChessModel getInstance() {
         return chessModel;
     }
 
+    /**
+     * crea an init board , reset the board and the time
+     */
     public void reinit() {
         eat = false;
         board.createInitBoard();
@@ -44,6 +51,13 @@ public class ChessModel implements IChess {
         }
     }
 
+    /**
+     * find piece type
+     * @param p x/y position on the board where we want to get the piece type.
+     * @return the type of one piece get with pos
+     * @throws EmptyCellException get type of null case
+     * @throws OutOfBoardException out of board
+     */
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         Piece myPiece = board.findPiece(p);
@@ -53,6 +67,13 @@ public class ChessModel implements IChess {
         throw new EmptyCellException();
     }
 
+    /**
+     * find piece color
+     * @param p x/y position on the board where we want to get the piece color.
+     * @return the type of one piece get with pos
+     * @throws EmptyCellException get type of null case
+     * @throws OutOfBoardException out of board
+     */
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         if (p.x > 7 || p.x < 0 || p.y > 7 || p.y < 0) {
@@ -65,7 +86,11 @@ public class ChessModel implements IChess {
         throw new EmptyCellException();
     }
 
-
+    /**
+     * counts the number of pieces not left depending on the color
+     * @param color the requested color of the pieces to count.
+     * @return number of pieces not left depending on the color
+     */
     @Override
     public int getNbRemainingPieces(ChessColor color) {
 
@@ -81,6 +106,11 @@ public class ChessModel implements IChess {
         return 0;
     }
 
+    /**
+     * find all moves for one piece get with pos
+     * @param p requested piece position.
+     * @return  all moves for one piece get with pos
+     */
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         Piece piece = null;
@@ -92,6 +122,11 @@ public class ChessModel implements IChess {
         }
     }
 
+    /**
+     * to move a piece on the board
+     * @param p0 source position on the board.
+     * @param p1 destination position on the board.
+     */
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
         board.previousBoard();
@@ -114,6 +149,11 @@ public class ChessModel implements IChess {
         time.newTour(piece.getColor());
     }
 
+    /**
+     * get if king is in check
+     * @param color the requested king color.
+     * @return state of king
+     */
     @Override
     public ChessKingState getKingState(ChessColor color) {
         return board.findKing(color);
