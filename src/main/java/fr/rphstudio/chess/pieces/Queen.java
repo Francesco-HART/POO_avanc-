@@ -11,13 +11,13 @@ import java.util.List;
 public class Queen implements IMove {
     /**
      * use moveForward for get all inline moves and moveDiagonal for all diagonal move
-     * @param p position of one piece in the board
+     *
+     * @param p   position of one piece in the board
      * @param brd board with all pieces
      * @return list with all moves
      */
     @Override
-    public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd)
-    {
+    public List<IChess.ChessPosition> move(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> movePos = new ArrayList<>();
         List<IChess.ChessPosition> list1;
         List<IChess.ChessPosition> list2;

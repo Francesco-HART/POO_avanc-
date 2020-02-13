@@ -18,20 +18,26 @@ public class Timer {
 
     /**
      * get time play for one player
-     * @param color color for the piece
+     *
+     * @param color     color for the piece
      * @param isPlaying if true the color select play
      * @return the time play
      */
     public long getPlayertime(IChess.ChessColor color, boolean isPlaying) {
         long time = 0;
-        if (color == IChess.ChessColor.CLR_WHITE) {
-            time = timeWhite;
-        } else if (color == IChess.ChessColor.CLR_BLACK) {
-            time = timeBlack;
+        try {
+            if (color == IChess.ChessColor.CLR_WHITE) {
+                time = timeWhite;
+            } else if (color == IChess.ChessColor.CLR_BLACK) {
+                time = timeBlack;
+            }
+            if (isPlaying == true) {
+                time += getCurrentTime();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        if (isPlaying == true) {
-            time += getCurrentTime();
-        }
+
         return time;
     }
 
@@ -47,14 +53,20 @@ public class Timer {
 
     /**
      * permis to change tour of game
+     *
      * @param color
      */
     public void newTour(IChess.ChessColor color) {
-        if (color == IChess.ChessColor.CLR_WHITE) {
-            timeWhite += getCurrentTime();
-        } else if (color == IChess.ChessColor.CLR_BLACK) {
-            timeBlack += getCurrentTime();
+        try {
+            if (color == IChess.ChessColor.CLR_WHITE) {
+                timeWhite += getCurrentTime();
+            } else if (color == IChess.ChessColor.CLR_BLACK) {
+                timeBlack += getCurrentTime();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
         startNewTime();
     }
 }
