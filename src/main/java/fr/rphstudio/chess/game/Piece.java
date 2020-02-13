@@ -13,7 +13,7 @@ public class Piece
     private IChess.ChessColor color;
     private IChess.ChessType type;
     private IMove iMove;
-    private int nbMoves = 0;
+    private int countMove = 0;
 
     public Piece(IChess.ChessColor color, IChess.ChessType type , IMove moves)
     {
@@ -38,7 +38,12 @@ public class Piece
     }
 
 
-    public int countMoves(){
-        return nbMoves++;
+    public void setCountMove(int countMove) {
+        this.countMove = countMove + 1;
     }
+
+    public int getCountMove() {
+        return countMove;
+    }
+
 }

@@ -50,14 +50,12 @@ public class Pawn implements IMove {
                 }
             }
 
-            if(POSX_PAWN == 7){
 
-            }
         } else if (ownColor == ChessColor.CLR_BLACK) {
             ChessPosition pos2 = new ChessPosition(p.x, p.y - 2);
             ChessPosition pos = new ChessPosition(p.x, p.y - 1);
 
-            if (p.y == LINEPAWN_BOTTOM && brd.findPiece(pos2) == null)
+            if (p.y == LINEPAWN_BOTTOM && brd.findPiece(pos2) == null && brd.findPiece(pos) == null)
                 plausible.add(pos2);
 
             if (brd.findPiece(pos) == null)
@@ -88,5 +86,6 @@ public class Pawn implements IMove {
         return plausible;
     }
 }
+
 
 

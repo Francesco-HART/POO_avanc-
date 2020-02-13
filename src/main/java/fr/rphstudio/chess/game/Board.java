@@ -17,6 +17,8 @@ public class Board
             new IChess.ChessType[]{IChess.ChessType.TYP_ROOK,  IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KING, IChess.ChessType.TYP_QUEEN, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_ROOK};
     private IMove[] gridMoves = new IMove[]{new Rook(), new Knight(), new Bishop(), new King(), new Queen(), new Bishop(), new Knight(), new Rook()};
     private Piece retardedBoard [][];
+    public int POS_END_WHITE = 7;
+    public int POS_END_BLACK = 0;
     public Board()
     {
         this.grid = new Piece[8][8];
@@ -115,10 +117,48 @@ public class Board
         return kingState;
     }
 
-    public void movePiece(IChess.ChessPosition p0,IChess.ChessPosition p1)
-    {
-        grid[p1.y][p1.x] = grid[p0.y][p0.x];
-        grid[p0.y][p0.x] = null;
+    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+        if (grid[p1.y][p1.x] == null || grid[p0.y][p0.x].getColor() != grid[p1.y][p1.x].getColor()) {
+            if (grid[p0.y][p0.x].getType() == IChess.ChessType.TYP_KING) {
+                rock(p0, p1);
+            }
+            Piece TAB_VALPOS_P0 = grid[p0.y][p0.x];
+            TAB_VALPOS_P0 = pawnToQueen(TAB_VALPOS_P0, p1);
+            grid[p1.y][p1.x] = TAB_VALPOS_P0;
+            grid[p0.y][p0.x] = null;
+        }
+    }
+
+
+    public Piece pawnToQueen(Piece valPos, IChess.ChessPosition p) {
+        if (valPos != null) {
+            if (valPos.getType() == IChess.ChessType.TYP_PAWN) {
+                if (p.y == POS_END_WHITE) {
+                    return new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN, new Queen());
+                } else if (p.y == POS_END_BLACK) {
+                    return new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN, new Queen());
+                }
+            }
+        }
+        return valPos;
+    }
+
+    public void rock(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+
+        if (grid[p1.y][p1.x + 1] != null && grid[p1.y][p1.x + 1].getCountMove() == 0 && grid[p1.y][p1.x + 1].getColor() == grid[p0.y][p0.x].getColor()) {
+            Piece CASE_TOWER = grid[p1.y][p1.x + 1];
+            Piece CASE_KING = grid[p0.y][p0.x];
+            grid[p1.y][p1.x] = CASE_KING;
+            grid[p1.y][p1.x - 1] = CASE_TOWER;
+            grid[p1.y][p1.x + 1] = null;
+
+        } else if (grid[p1.y][p1.x + -1] != null && grid[p1.y][p1.x - 1].getCountMove() == 0 && grid[p1.y][p1.x - 1].getColor() == grid[p0.y][p0.x].getColor()) {
+            Piece CASE_TOWER = grid[p1.y][p1.x - 1];
+            Piece CASE_KING = grid[p0.y][p0.x];
+            grid[p1.y][p1.x] = CASE_KING;
+            grid[p1.y][p1.x + 1] = CASE_TOWER;
+            grid[p1.y][p1.x - 1] = null;
+        }
     }
 
     public void previousBoard()

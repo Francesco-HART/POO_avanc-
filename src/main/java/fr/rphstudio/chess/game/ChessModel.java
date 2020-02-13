@@ -9,17 +9,16 @@ import fr.rphstudio.chess.pieces.Pawn;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChessModel implements IChess
-{
+public class ChessModel implements IChess {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
     private Timer time = new Timer();
-    private ChessModel ()
-    {
+
+    private ChessModel() {
 
     }
-    public static ChessModel getInstance()
-    {
+
+    public static ChessModel getInstance() {
         return chessModel;
     }
 
@@ -31,7 +30,7 @@ public class ChessModel implements IChess
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         Piece myPiece = board.findPiece(p);
-        if (myPiece != null){
+        if (myPiece != null) {
             return myPiece.getType();
         }
         throw new EmptyCellException();
@@ -40,7 +39,7 @@ public class ChessModel implements IChess
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         Piece myPiece = board.findPiece(p);
-        if (myPiece != null){
+        if (myPiece != null) {
             return myPiece.getColor();
         }
         throw new EmptyCellException();
@@ -50,14 +49,13 @@ public class ChessModel implements IChess
     @Override
     public int getNbRemainingPieces(ChessColor color) {
 
-        if (color != null){
-            if ( color == ChessColor.CLR_BLACK){
+        if (color != null) {
+            if (color == ChessColor.CLR_BLACK) {
                 int count = board.countColor(color);
-                return  count;
-            }
-            else if ( color == ChessColor.CLR_WHITE){
+                return count;
+            } else if (color == ChessColor.CLR_WHITE) {
                 int count = board.countColor(color);
-                return  count;
+                return count;
             }
         }
         return 0;
@@ -66,29 +64,27 @@ public class ChessModel implements IChess
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         Piece piece = null;
-            piece = board.findPiece(p);
-        if(piece == null){
+        piece = board.findPiece(p);
+        if (piece == null) {
             return new ArrayList<>();
-        }
-       else{
+        } else {
             return piece.getMoves(p, board);
         }
     }
 
     @Override
-    public void movePiece(ChessPosition p0, ChessPosition p1)
-    {
+    public void movePiece(ChessPosition p0, ChessPosition p1) {
         board.previousBoard();
         Piece piece = null;
-            piece = board.findPiece(p0);
-        board.movePiece(p0 , p1);
-        int nbMoves = piece.countMoves();
+        piece = board.findPiece(p0);
+        board.findPiece(p0).setCountMove(board.findPiece(p0).getCountMove());
+        board.movePiece(p0, p1);
+
         time.newTour(piece.getColor());
     }
 
     @Override
-    public ChessKingState getKingState(ChessColor color)
-    {
+    public ChessKingState getKingState(ChessColor color) {
         return board.findKing(color);
     }
 
@@ -103,8 +99,7 @@ public class ChessModel implements IChess
     }
 
     @Override
-    public long getPlayerDuration(ChessColor color, boolean isPlaying)
-    {
-        return time.getPlayertime(color,isPlaying);
+    public long getPlayerDuration(ChessColor color, boolean isPlaying) {
+        return time.getPlayertime(color, isPlaying);
     }
 }
