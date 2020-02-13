@@ -15,6 +15,11 @@ public class ChessModel implements IChess {
     private static ChessModel chessModel = new ChessModel();
     private Board board = new Board();
     private Timer time = new Timer();
+    private List<IChess.ChessType> whitePiecesEat = new ArrayList<>();
+    private List<IChess.ChessType> blackPiecesEat = new ArrayList<>();
+    private List<ChessType> tabPiecesEat;
+    private boolean eat = false;
+
 
     private ChessModel() {
 
@@ -25,10 +30,18 @@ public class ChessModel implements IChess {
     }
 
     public void reinit() {
-
+        eat = false;
         board.createInitBoard();
+        board.resetSave();
         time.reset();
-
+        try{
+            whitePiecesEat.clear();
+            blackPiecesEat.clear();
+            tabPiecesEat.clear();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -42,7 +55,7 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        if (p.x>7 || p.x<0 || p.y>7 || p.y<0){
+        if (p.x > 7 || p.x < 0 || p.y > 7 || p.y < 0) {
             throw new OutOfBoardException();
         }
         Piece myPiece = board.findPiece(p);
@@ -84,7 +97,18 @@ public class ChessModel implements IChess {
         board.previousBoard();
         Piece piece = null;
         piece = board.findPiece(p0);
-        board.findPiece(p0).setCountMove(board.findPiece(p0).getCountMove());
+
+        eat = false;
+        if (board.findPiece(p1) != null && board.findPiece(p0).getColor() != board.findPiece(p1).getColor()) {
+            eat = true;
+            if (board.findPiece(p1).getColor() == ChessColor.CLR_WHITE)
+                whitePiecesEat.add(0, board.findPiece(p1).getType());
+
+            else if (board.findPiece(p1).getColor() == ChessColor.CLR_BLACK)
+                blackPiecesEat.add(0, board.findPiece(p1).getType());
+
+        }
+
         board.movePiece(p0, p1);
 
         time.newTour(piece.getColor());
@@ -97,11 +121,22 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        return new ArrayList<>();
+
+        if (color == ChessColor.CLR_WHITE)
+            tabPiecesEat = whitePiecesEat;
+
+        else
+            tabPiecesEat = blackPiecesEat;
+
+        return tabPiecesEat;
+
     }
 
     @Override
     public boolean undoLastMove() {
+        if (eat)
+            tabPiecesEat.remove(0);
+
         return board.getPrevious();
     }
 

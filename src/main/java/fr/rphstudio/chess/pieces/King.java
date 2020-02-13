@@ -18,9 +18,11 @@ public class King implements IMove {
         for (int x = POSX_KING - 1; x <= POSX_KING + 1; x++) {
             for (int y = POSY_KING - 1; y <= POSY_KING + 1; y++) {
                 if (x <= 7 && y <= 7 && x > -1 && y > -1) {
-                    IChess.ChessPosition myPos = new IChess.ChessPosition(x, y);
-                    if (brd.findPiece(myPos) == null || brd.findPiece(myPos).getColor() != brd.findPiece(p).getColor()) {
-                        tabPos.add(myPos);
+                    IChess.ChessPosition kingPossibility = new IChess.ChessPosition(x, y);
+                    if (brd.findPiece(kingPossibility) == null || brd.findPiece(kingPossibility).getColor() != brd.findPiece(p).getColor()) {
+
+                            tabPos.add(kingPossibility);
+
                     }
                 }
 
@@ -28,7 +30,7 @@ public class King implements IMove {
 
                     IChess.ChessPosition towerPos = new IChess.ChessPosition(p.x + 4, p.y);
                     boolean wayVoid = true;
-                    if (brd.findPiece(towerPos) != null && brd.findPiece(towerPos).getCountMove() == 0) {
+                    if (brd.findPiece(towerPos) != null && brd.findPiece(towerPos).getCountMove() == 0 && brd.findPiece(towerPos).getType() == IChess.ChessType.TYP_ROOK) {
 
                         for (int i = 3; i > 0; i--) {
                             if (brd.findPiece(new IChess.ChessPosition(POSX_KING + i, POSY_KING)) != null) {
@@ -43,7 +45,7 @@ public class King implements IMove {
 
                     wayVoid = true;
                     towerPos = new IChess.ChessPosition(p.x - 3, p.y);
-                    if (brd.findPiece(towerPos) != null && brd.findPiece(towerPos).getCountMove() == 0) {
+                    if (brd.findPiece(towerPos) != null && brd.findPiece(towerPos).getCountMove() == 0 && brd.findPiece(towerPos).getType() == IChess.ChessType.TYP_ROOK) {
                         for (int i = 2; i > 0; i--) {
                             if (brd.findPiece(new IChess.ChessPosition(POSX_KING - i, POSY_KING)) != null) {
                                 wayVoid = false;
@@ -57,7 +59,6 @@ public class King implements IMove {
                 }
             }
         }
-
         return tabPos;
     }
 }

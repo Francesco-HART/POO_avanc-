@@ -5,9 +5,8 @@ import fr.rphstudio.chess.interf.IChess;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovePiece
-{
-    public List<IChess.ChessPosition> moveDiagonal (IChess.ChessPosition p, Board brd) {
+public class MovePiece {
+    public List<IChess.ChessPosition> moveDiagonal(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> moves = new ArrayList<>();
 
         for (int dir = 0; dir <= 3; dir++) {
@@ -37,17 +36,16 @@ public class MovePiece
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx * dist, p.y + dy * dist);
                 if (pos.x < 8 && pos.y < 8 && pos.x >= 0 && pos.y >= 0) {
                     if (brd.findPiece(pos) == null) {
+
                         moves.add(pos);
-                    }
-                    else if(brd.findPiece(pos).getColor() != brd.findPiece(p).getColor())
-                    {
+                    } else if (brd.findPiece(pos).getColor() != brd.findPiece(p).getColor()) {
+
                         moves.add(pos);
                         break;
-                    }
-                    else break;
 
-                }
-                else {
+                    } else break;
+
+                } else {
                     break;
                 }
             }
@@ -55,7 +53,7 @@ public class MovePiece
         return moves;
     }
 
-    public List<IChess.ChessPosition> moveForward (IChess.ChessPosition p, Board brd) {
+    public List<IChess.ChessPosition> moveForward(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> moves = new ArrayList<>();
 
         for (int dir = 0; dir <= 3; dir++) {
@@ -81,16 +79,14 @@ public class MovePiece
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx * dist, p.y + dy * dist);
                 if (pos.x < 8 && pos.y < 8 && pos.x >= 0 && pos.y >= 0) {
                     if (brd.findPiece(pos) == null) {
+
                         moves.add(pos);
-                    }
-                    else if(brd.findPiece(pos).getColor() != brd.findPiece(p).getColor())
-                    {
+                    } else if (brd.findPiece(pos).getColor() != brd.findPiece(p).getColor()) {
                         moves.add(pos);
                         break;
-                    }
-                    else break;
-                } else
-                {
+
+                    } else break;
+                } else {
                     break;
                 }
             }

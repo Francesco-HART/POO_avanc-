@@ -20,15 +20,33 @@ public class Knight implements IMove {
                 int dx = Math.abs(p.x - i);
                 int dy = Math.abs(p.y - j);
                 if (dx + dy == 3) {
-                    IChess.ChessPosition position = new IChess.ChessPosition(i, j);
-                    if (position.x < 8 && position.y < 8 && position.x >= 0 && position.y >= 0) {
-                        if (brd.findPiece(position) == null || brd.findPiece(position).getColor() != brd.findPiece(p).getColor()){
-                            tabPos.add(position);
+                    IChess.ChessPosition posCan = new IChess.ChessPosition(i, j);
+                    if (posCan.x < 8 && posCan.y < 8 && posCan.x >= 0 && posCan.y >= 0) {
+
+                        if (brd.findPiece(posCan) == null || brd.findPiece(posCan).getColor() != brd.findPiece(p).getColor())
+                        {
+                                    tabPos.add(posCan);
                         }
+
                     }
+
                 }
             }
         }
+
+
+        /*
+        tabPos.add(new IChess.ChessPosition(p.x+1, p.y-2));
+        tabPos.add(new IChess.ChessPosition(p.x-1, p.y-2));
+        tabPos.add(new IChess.ChessPosition(p.x+1, p.y+2));
+        tabPos.add(new IChess.ChessPosition(p.x-1, p.y+2));
+        tabPos.add(new IChess.ChessPosition(p.x+2, p.y-1));
+        tabPos.add(new IChess.ChessPosition(p.x-2, p.y-1));
+        tabPos.add(new IChess.ChessPosition(p.x+2, p.y+1));
+        tabPos.add(new IChess.ChessPosition(p.x-2, p.y+1));
+        */
+
+
         return tabPos;
     }
 }
