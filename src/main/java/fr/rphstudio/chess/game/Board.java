@@ -2,6 +2,7 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
+import fr.rphstudio.chess.interf.OutOfBoardException;
 import fr.rphstudio.chess.pieces.*;
 
 import java.util.ArrayList;
@@ -15,13 +16,19 @@ public class Board
     private IChess.ChessType[] gridType =
             new IChess.ChessType[]{IChess.ChessType.TYP_ROOK,  IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KING, IChess.ChessType.TYP_QUEEN, IChess.ChessType.TYP_BISHOP , IChess.ChessType.TYP_KNIGHT, IChess.ChessType.TYP_ROOK};
     private IMove[] gridMoves = new IMove[]{new Rook(), new Knight(), new Bishop(), new King(), new Queen(), new Bishop(), new Knight(), new Rook()};
+    private Piece retardedBoard [][];
     public Board()
     {
         this.grid = new Piece[8][8];
         createInitBoard();
     }
 
-    public Piece findPiece(IChess.ChessPosition p){
+    public Piece findPiece(IChess.ChessPosition p)
+    {
+        if (p.y < 0 || p.y > 7 || p.x < 0 || p.x >  7)
+        {
+            return null;
+        }
         return this.grid[p.y][p.x];
     }
 
@@ -95,11 +102,8 @@ public class Board
         }
         for (int k = 0; k < alllistPos.size(); k++)
         {
-            System.out.println("position du rois " + posKing.x + " " + posKing.y);
-            System.out.println("position de ma liste  " + alllistPos.get(k).x + " " + alllistPos.get(k).y);
             if (alllistPos.get(k).y == posKing.y && alllistPos.get(k).x == posKing.x)
             {
-                System.out.println("je suis dans mon if pour alerter le roi");
                 kingState = IChess.ChessKingState.KING_THREATEN;
                 return kingState;
             }
@@ -115,6 +119,22 @@ public class Board
     {
         grid[p1.y][p1.x] = grid[p0.y][p0.x];
         grid[p0.y][p0.x] = null;
+    }
+
+    public void previousBoard()
+    {
+        this.retardedBoard = new Piece[8][8];
+        for (int i = 0; i < this.grid.length ; i++) {
+            for (int j = 0; j < this.grid.length; j++) {
+                retardedBoard[i][j] = this.grid [i][j];
+            }
+        }
+    }
+
+    public boolean getPrevious()
+    {
+        grid = retardedBoard;
+        return true;
     }
 
 }

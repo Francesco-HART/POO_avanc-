@@ -65,7 +65,8 @@ public class ChessModel implements IChess
 
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
-        Piece piece = board.findPiece(p);
+        Piece piece = null;
+            piece = board.findPiece(p);
         if(piece == null){
             return new ArrayList<>();
         }
@@ -77,7 +78,9 @@ public class ChessModel implements IChess
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1)
     {
-        Piece piece = board.findPiece(p0);
+        board.previousBoard();
+        Piece piece = null;
+            piece = board.findPiece(p0);
         board.movePiece(p0 , p1);
         int nbMoves = piece.countMoves();
         time.newTour(piece.getColor());
@@ -96,7 +99,7 @@ public class ChessModel implements IChess
 
     @Override
     public boolean undoLastMove() {
-        return false;
+        return board.getPrevious();
     }
 
     @Override
