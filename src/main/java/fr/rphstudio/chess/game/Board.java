@@ -2,7 +2,6 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
-import fr.rphstudio.chess.interf.OutOfBoardException;
 import fr.rphstudio.chess.pieces.*;
 
 import java.util.ArrayList;
@@ -172,12 +171,12 @@ public class Board {
      */
     public void rock(IChess.ChessPosition p0, IChess.ChessPosition p1) {
 
-        if (grid[p1.y][p1.x + 1] != null && grid[p1.y][p1.x + 1].getCountMove() == 0 && grid[p1.y][p1.x + 1].getColor() == grid[p0.y][p0.x].getColor() && grid[p1.y][p1.x + 1].getType() == IChess.ChessType.TYP_ROOK) {
-            Piece CASE_TOWER = grid[p1.y][p1.x + 1];
+        if (grid[p1.y][p1.x + 2] != null && grid[p1.y][p1.x + 2].getCountMove() == 0 && grid[p1.y][p1.x + 2].getColor() == grid[p0.y][p0.x].getColor() && grid[p1.y][p1.x + 2].getType() == IChess.ChessType.TYP_ROOK) {
+            Piece CASE_TOWER = grid[p1.y][p1.x + 2];
             Piece CASE_KING = grid[p0.y][p0.x];
             grid[p1.y][p1.x] = CASE_KING;
             grid[p1.y][p1.x - 1] = CASE_TOWER;
-            grid[p1.y][p1.x + 1] = null;
+            grid[p1.y][p1.x + 2] = null;
 
         } else if (grid[p1.y][p1.x + -1] != null && grid[p1.y][p1.x - 1].getCountMove() == 0 && grid[p1.y][p1.x - 1].getColor() == grid[p0.y][p0.x].getColor() && grid[p1.y][p1.x - 1].getType() == IChess.ChessType.TYP_ROOK) {
             Piece CASE_TOWER = grid[p1.y][p1.x - 1];

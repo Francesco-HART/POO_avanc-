@@ -4,7 +4,7 @@ import fr.rphstudio.chess.game.Board;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
 
-import javax.swing.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class King implements IMove {
                                 }
                             }
                             if (wayVoid) {
-                                tabPos.add(new IChess.ChessPosition(POSX_KING + 3, POSY_KING));
+                                tabPos.add(new IChess.ChessPosition(POSX_KING + 2, POSY_KING));
                             }
                         }
 
