@@ -38,11 +38,12 @@ public class ChessModel implements IChess {
      * crea an init board , reset the board and the time
      */
     public void reinit() {
-        try {eat = false;
-        board.createInitBoard();
-        board.resetSave();
-        time.reset();
-        }catch (Exception e){
+        try {
+            eat = false;
+            board.createInitBoard();
+            board.resetSave();
+            time.reset();
+        } catch (Exception e) {
             System.out.println(e);
         }
         try {
@@ -120,13 +121,23 @@ public class ChessModel implements IChess {
      */
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
-        Piece piece = null;
-        piece = board.findPiece(p);
-        if (piece == null) {
-            return new ArrayList<>();
-        } else {
-            return piece.getMoves(p, board);
-        }
+       try {
+           Piece piece = board.findPiece(p);
+           if (piece == null) {
+               return new ArrayList<>();
+           } else {
+               List<ChessPosition> moves = piece.getMoves(p, board);
+               List<ChessPosition> validMoves = new ArrayList<>();
+               for (ChessPosition move : moves) {
+                   if (board.tryMove(p, move))
+                       validMoves.add(move);
+               }
+               return validMoves;
+           }
+       }catch (Exception e){
+           System.out.println(e);
+           return new ArrayList<>();
+       }
     }
 
     /**

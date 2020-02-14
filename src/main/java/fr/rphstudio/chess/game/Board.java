@@ -228,30 +228,29 @@ public class Board {
         retardedBoard = grid;
     }
 
-/**
- * test if case around king are safe
- */
-//    public boolean tryMove(IChess.ChessPosition p0, IChess.ChessPosition p1) {
-//        boolean isPossible = false;
-//        try {
-//            Piece save = grid[p1.y][p1.x];
-//            grid[p1.y][p1.x] = grid[p0.y][p0.x];
-//            grid[p0.y][p0.x] = null;
-//            IChess.ChessKingState monState = findKing(grid[p1.y][p1.x].getColor());
-//            if (monState == IChess.ChessKingState.KING_SAFE) {
-//                isPossible = true;
-//
-//            }
-//            grid[p0.y][p0.x] = grid[p1.y][p1.x];
-//            grid[p1.y][p1.x] = save;
-//
-//            return isPossible;
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            return isPossible;
-//        }
-//        //return isPossible;
-//
-//    }
+    /**
+     * test if case around king are safe
+     */
+    public boolean tryMove(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+        boolean isPossible = false;
+        try {
+            Piece save = grid[p1.y][p1.x];
+            grid[p1.y][p1.x] = grid[p0.y][p0.x];
+            grid[p0.y][p0.x] = null;
+            IChess.ChessKingState monState = findKing(grid[p1.y][p1.x].getColor());
+            if (monState == IChess.ChessKingState.KING_SAFE) {
+                isPossible = true;
+
+            }
+            grid[p0.y][p0.x] = grid[p1.y][p1.x];
+            grid[p1.y][p1.x] = save;
+
+            return isPossible;
+        } catch (Exception e) {
+            System.out.println(e);
+            return isPossible;
+        }
+
+    }
 
 }
